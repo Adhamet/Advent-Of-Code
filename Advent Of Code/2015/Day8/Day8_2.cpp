@@ -23,34 +23,23 @@ int main()
     }
     for (int i = 0 ; i < 300 ; i++)
     {
+        rescalc += 2;
         for (int j = 0 ; j < list[i].length() ;)
         {
-            if (list[i][j] == '\"') { rescalc += 2; j++; }
+            if (list[i][j] == '\"')
+            {
+                j++; rescalc += 2;
+            }
             else if (list[i][j] == '\\')
             {
-                if (list[i][j+1] == '\\')
-                {
-                    rescalc++;
-                    j += 2;
-                }
-                else if (list[i][j+1] == '\"')
-                {
-                    rescalc++;
-                    j += 2;
-                }
-                else if (list[i][j+1] == 'x')
-                {
-                    rescalc++;
-                    j += 4;
-                }
+                j++; rescalc += 2;
             }
             else
             {
-                rescalc++;
-                j++;
+                j++; rescalc++;
             }
         }
     }
     input.close();
-    cout << orgcalc - rescalc;
+    cout << rescalc - orgcalc;
 }
