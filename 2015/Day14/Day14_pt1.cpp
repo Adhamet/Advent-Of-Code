@@ -44,11 +44,7 @@ int main()
     // Output Section ----------------------------------------------------------------------------------
     int winner = 0;
     for (int i = 0; i < numR; i++)
-    {
         if (reinDeer[i].maxDist > winner)
-        {
             winner = reinDeer[i].maxDist;
-        }
-    }
     cout << winner;
 }
