@@ -56,11 +56,7 @@ int main()
     // Output Section ----------------------------------------------------------------------------------
     int gold = 0;
     for (int i = 0; i < numR; i++)
-    {
         if (reinDeer[i].score > gold)
-        {
             gold = reinDeer[i].score;
-        }
-    }
     cout << gold;
 }
