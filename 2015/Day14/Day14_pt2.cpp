@@ -9,7 +9,7 @@ using namespace std;
     
 struct reindeer{
     string name;
-    int speed, maxDist = 0, timeRun, timeRest, score = 0, last = 2503, restLast = 0;
+    int speed, maxDist = 0, timeRun, timeRest, score = 0, restLast = 0;
 };
 
 int main()
@@ -42,7 +42,6 @@ int main()
                     reinDeer[j].restLast = i + reinDeer[j].timeRest;
             }
         }
-
 
         int winner = 0;
         for (int j = 0; j < numR; j++)
