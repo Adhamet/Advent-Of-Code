@@ -1,51 +1,45 @@
 #include <iostream>
 #include <fstream>
+#define sent 1000
 using namespace std;
+
+bool prop1(string sentence);
+bool prop2(string sentence);
+
 
 int main()
 {
-    ifstream INPUT;
-    INPUT.open("Day5_Input.txt");
-    int prop1=0,prop2=0,nice=0, row, col, col1;
-    char input[1000][16];
-    for ( row = 0; row < 1000; row++ )
+    ifstream inData;
+    inData.open("Day5_Input.txt");
+
+    int nice = 0, i = 0;
+    string array[sent];
+
+    while(inData.eof() == 0)
     {
-        for ( col = 0; col < 16; col++ )
-        {
-            INPUT >> input[row][col];
-            input[row][col1] == input[row][col];
-            col1++;
-        }
-        for ( col = 0; col < 16; col++ )
-        {
-            for ( col1 = 0; col1 < 16; col1++ )
-            {
-                    if ( input[row][col1+2] == input[row][col] && input[row][col1+3] == input[row][col+1] && input[row][col1+2] != input[row][col])
-                    {
-                        if (col1+1 < 16 && col1+2 < 16 && col1+3 < 16)
-                        {
-                            prop1++;
-                        }
-                    }
-            }
-        }
-        
-        for ( col = 0; col < 16; col++ )
-        {
-            if ( input[row][col] == input[row][col+2] )
-            {
-                if (input[row][col+2] < 16)
-                {
-                    prop2++;
-                }
-            }
-        }
-        if ( prop1 > 1 && prop2 != 0 )
-            {
-                nice++;
-            }
-        prop1=0,prop2=0;
+        inData >> array[i];
+        i++;
     }
-    INPUT.close();
+    for (int i = 0; i < sent; i++)
+        if (prop1(array[i]) && prop2(array[i]))
+            nice++;
     cout << nice;
+}
+
+
+bool prop1 (string sentence)
+{
+    for (int i = 0; i < sentence.length()-3; i++)
+        for (int j = i+2; j < sentence.length()-1; j++)
+            if (sentence[i] == sentence[j])
+                if (sentence[i+1] == sentence[j+1])
+                    return true;
+    return false;
+}
+bool prop2 (string sentence)
+{
+    for (int i = 0; i < sentence.length()-2; i++)
+        if (sentence[i] == sentence[i+2])
+            return true;
+    return false;
 }
