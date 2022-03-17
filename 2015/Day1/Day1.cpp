@@ -6,25 +6,19 @@ using namespace std;
 
 int main()
 {
-    int FLOOR=0, i = 0; char ch;
+    int FLOOR=0;
+    char ch;
     ifstream input;
     input.open("Day1 Input.txt");
-    while (input)
+    while (input.eof() == 0)
     {
         input >> ch;
         if ( ch == '(' )
-        {
             FLOOR++; 
-        }
         else if ( ch == ')' )
-        {
             FLOOR--;
-        }
-        else break;
-        i++;
     }
-    input.close();
-    cout << FLOOR-1;
+    cout << FLOOR;
 }
 
 
@@ -47,13 +41,9 @@ int main()
     for ( int i = 0; i < ALPHA.length() ; i++ )
     {
         if ( ch == '(' )
-        {
             FLOOR++; 
-        }
         else if ( ch == ')' )
-        {
             FLOOR--;
-        }
         if (FLOOR == -1)
         {
             cout << i+1;
